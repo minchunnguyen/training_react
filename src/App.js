@@ -1,14 +1,14 @@
 import React from 'react';
-import WorkerList from './Component/WorkerList'
+// import WorkerList from './Component/WorkerList'
 // import NavBar from './Layout/NavBar'
-// import Tasks from './Component/Tasks';
+import TaskList from './Component/TaskList';
 
 function App() {
   return (
     <div className="container">
       {/* <NavBar /> */}
-      <WorkerList />
-      {/* <Tasks /> */}
+      {/* <WorkerList /> */}
+      <TaskList />
     </div>
 
   );
