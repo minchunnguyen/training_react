@@ -33,7 +33,13 @@ export class AddWorkerPopup extends Component {
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group controlId="formWorkerNumber">
                             <Form.Label>Number</Form.Label>
-                            <Form.Control type="number" placeholder="Enter number" />
+                            <Form.Control type="number" placeholder="Enter number" onChange={
+                                (event) => {
+                                    this.setState({
+                                        newWorker: {...this.state.newWorker, number: event.target.value}
+                                    })
+                                }
+                            }/>
                         </Form.Group>
                         <Form.Group controlId="formWorkerName">
                             <Form.Label>Worker Name</Form.Label>
@@ -56,7 +62,6 @@ export class AddWorkerPopup extends Component {
                             </Form.Control>
                         </Form.Group>
                         <Button variant="secondary" onClick={toggleAddWorkerPopup}>Close</Button>
-                        <Button variant="primary" type="submit">Submit</Button>
                         <Button variant="danger" onClick={() => addWorkerFunction(this.state.newWorker)}>Add</Button>
                     </Form>
                 }

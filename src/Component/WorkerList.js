@@ -33,16 +33,24 @@ export class WorkerList extends Component {
         });
     }
 
-    deleteWorkerFunction = (DeleteWorker) => {
+    deleteWorkerFunction = (deleteWorker) => {
         this.setState({
-            workers: this.state.workers.filter(w => w !== DeleteWorker),
-            showDeleteWorkerPopup: !this.state.showDeleteWorkerPopup
+            workers: this.state.workers.filter(w => w !== deleteWorker)
         });
     }
 
-    addWorkerFunction = (NewWorker) => {
+    addWorkerFunction = (newWorker) => {
         this.setState({
-            workers: [...this.state.workers, NewWorker]
+            workers: [...this.state.workers, newWorker]
+        });
+    }
+
+    modifyWorkerFunction = (modifyWorker) => {
+        let index = this.state.workers.findIndex((worker) => worker.number === modifyWorker.number);
+        let temp = [...this.state.workers];
+        temp[index] = modifyWorker;
+        this.setState({
+            workers: temp
         });
     }
 
@@ -51,7 +59,8 @@ export class WorkerList extends Component {
             <Worker
                 worker={worker}
                 key={worker.number}
-                toggleDeleteWorkerPopup={this.toggleDeleteWorkerPopup} />
+                toggleDeleteWorkerPopup={this.toggleDeleteWorkerPopup}
+                modifyWorkerFunction={this.modifyWorkerFunction}/>
         )
     }
 

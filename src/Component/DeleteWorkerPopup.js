@@ -21,7 +21,7 @@ export class DeleteWorkerPopup extends Component {
                 <Modal.Body>Are you sure to delete {deleteWorker ? deleteWorker.name: null}</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={toggleDeleteWorkerPopup}>Close</Button>
-                    <Button variant="danger" onClick={() => deleteWorkerFunction(deleteWorker)}>Delete</Button>
+                    <Button variant="danger" onClick={() => {deleteWorkerFunction(deleteWorker); toggleDeleteWorkerPopup();}}>Delete</Button>
                 </Modal.Footer>
             </Modal>
         )
