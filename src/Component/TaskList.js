@@ -1,33 +1,39 @@
 import React, { Component } from 'react'
 import Task from './Task'
-import tasks from '../tasks'
+import tasks from '../Contanst/tasks'
 import AddTaskPopup from './AddTaskPopup'
 import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
+import tasklist from '../Contanst/tasklist'
 
 export class TaskList extends Component {
    constructor(props) {
       super(props)
       this.state = {
-         showPopup: false
+         showAddTaskPopup: false,
+         workerId: props.match.params.name
       }
    }
 
    renderTaskList() {
-      return tasks.map((task) =>
+      const tasks = tasklist.filter(task => task.name === this.state.workerId);
+      const tasklistData = tasks.length > 0 ? tasks[0].tasks : [];
+      return tasklistData.map((task) =>
          <Task task={task} key={Task.id} />
       )
    }
 
    renderTaskListHeader() {
-      let header = Object.keys(tasks[0])
+      let header = Object.keys(tasks[0]);
+      header.push('');
       return header.map((key, index) => {
          return <th key={index}>{key.toUpperCase()}</th>
       })
    }
 
-   togglePopup = () => {
+   toggleAddTaskPopup = () => {
       this.setState({
-         showPopup: !this.state.showPopup
+         showAddTaskPopup: !this.state.showAddTaskPopup
       });
    }
 
@@ -36,21 +42,21 @@ export class TaskList extends Component {
          <div>
             <div>
                <h2>TASK LIST </h2>
-               <Button variant="primary" onClick={this.togglePopup} className="margin-5 border-radius-25">+</Button>
+               <Button variant="primary" onClick={this.toggleAddTaskPopup} className="margin-5 border-radius-25">+</Button>
             </div>
             <div class="row">
-               <div className={this.state.showPopup ? "col-lg-4" : ""}>
-                  {this.state.showPopup ?
+               <div className={this.state.showAddTaskPopup ? "col-lg-4" : ""}>
+                  {this.state.showAddTaskPopup ?
                      <AddTaskPopup
-                        showPopup={this.state.showPopup}
-                        togglePopup={this.togglePopup}
+                        showAddTaskPopup={this.state.showAddTaskPopup}
+                        toggleAddTaskPopup={this.toggleAddTaskPopup}
                      />
                      : null
                   }
                </div>
-               <div className={this.state.showPopup ? "col-lg-8" : "col-lg-12"}>
-                  <table className="table table-hover" id='tasks'>
-                     <thead class="table-primary">
+               <div className={this.state.showAddTaskPopup ? "col-lg-8" : "col-lg-12"}>
+                  <Table striped bordered hover>
+                     <thead>
                         <tr>
                            {this.renderTaskListHeader()}
                         </tr>
@@ -58,7 +64,7 @@ export class TaskList extends Component {
                      <tbody>
                         {this.renderTaskList()}
                      </tbody>
-                  </table>
+                  </Table>
                </div>
             </div>
          </div>

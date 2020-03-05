@@ -15,12 +15,12 @@ export default [
         status: 'Done' 
     },
      { id: 4, 
-        name: 'Install the product in the test/QA environment.', 
-        detail: 'Install Business Systems Manager and appropriate patches on test or QA servers.', 
+        name: 'Install the product in the test/QA.', 
+        detail: 'Install Business Systems Manager and appropriate patches.', 
         status: 'To Do' 
     },
      { id: 5, 
-        name: 'Implement a business system in the test/QA environment..', 
+        name: 'Implement a business system in the test/QA', 
         detail: 'Design a relatively simple business system.', 
         status: 'To Do' 
     }

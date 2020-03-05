@@ -1,25 +1,20 @@
 import React, { Component } from 'react'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
 
 export class NavBar extends Component {
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">WorkerList</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Worker <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Action</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <Navbar bg="light" expand="lg">
+                <Navbar.Brand href="#">Worker List</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-Navbar-nav" />
+                <Navbar.Collapse id="basic-Navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/">Worker</Nav.Link>
+                        {/* <Nav.Link href="/#/task">Task</Nav.Link> */}
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }

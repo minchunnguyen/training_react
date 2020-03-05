@@ -1,8 +1,5 @@
 import React, { Fragment } from 'react'
-
 import { Button, Form } from 'react-bootstrap';
-// import DropdownButton from 'react-bootstrap/DropdownButton'
-// import Dropdown from 'react-bootstrap/Dropdown'
 
 class AddTaskPopup extends React.Component {
     constructor(props) {
@@ -13,7 +10,7 @@ class AddTaskPopup extends React.Component {
     }
 
     render() {
-        var { togglePopup } = this.props;
+        var { toggleAddTaskPopup } = this.props;
         return (
             <Fragment>
                 <div>
@@ -41,7 +38,7 @@ class AddTaskPopup extends React.Component {
 
                         </Form>
                         <Button variant="primary">Add</Button> { }
-                        <Button variant="danger" onClick={togglePopup}>Cancel</Button>
+                        <Button variant="danger" onClick={toggleAddTaskPopup}>Cancel</Button>
                     </div>
                 </div>
             </Fragment>
